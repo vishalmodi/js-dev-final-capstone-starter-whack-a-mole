@@ -42,8 +42,7 @@ h2 {
   flex-wrap: wrap;
   margin: 0 auto;
   /* cursor: url('./assets/peanut02.png'), pointer; */
-  /* cursor: url('http://127.0.0.1:5500//assets/peanut02.png'), pointer; */
-  cursor: url('https://github.com/Thinkful-Ed/js-dev-final-capstone-starter-whack-a-mole/blob/main/assets/mallet.png'), pointer;
+  cursor: url('https://github.com/vishalmodi/js-dev-final-capstone-starter-whack-a-mole/blob/main/assets/peanut02.png'), pointer;
 }
 
 .hole {
