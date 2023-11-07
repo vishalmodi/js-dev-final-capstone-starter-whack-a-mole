@@ -4,7 +4,7 @@ Feed-a-Mole is a game that you can play in web browser. In 10 seconds you have t
 
 It is developed using the HTML, CSS and JavaScript. Please reach out to developer if you need any help.
 
-![whackamole](https://github.com/gabrielsanchez/erddiagram/blob/main/whackamole.gif?raw=true)
+![whackamole](https://github.com/vishalmodi/js-dev-final-capstone-starter-whack-a-mole/blob/main/assets/Game-Dashboard.png?raw=true?raw=true)
 
 ## Game Dashboard
 
@@ -35,7 +35,7 @@ Note: You will not get any point on clicking multiple times.
 ### Timer
 Each game will start with 10 seconds timer, and remaining time will be display. 
 
-Note: Game will stop the timer become zero (0).
+Note: Game will stop when timer become zero (0).
 
 ### How to play Feed-a-Mole?
 Please follow these steps to play the game.
