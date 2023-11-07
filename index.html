@@ -1,29 +1,52 @@
 <html>
-  <head>
-    <link rel="stylesheet" href="./src/styles.css">
-  </head>
-  <body>
-    <h1></h1>
-    <div>
-      <div>
-        <h2>Click start to play!</h2>
-      </div>
-      <div>
-        <h2>score: <span id="score">0</span></h2>
-      </div>
-      <div>
-          <h2><span id="timer">0</span> seconds left.</h2>
+
+<head>
+  <link rel="stylesheet" href="./src/styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="column">
+      <div class="parent-col-flex">
+        <label for="game-level">Select Game Level</label>
+        <select name="game-level" id="game-level">
+          <option value="easy">Easy</option>
+          <option value="normal">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
       </div>
     </div>
-    <div class="grid">
+    <div class="column">
+      <h1 id="title">How many moles you can feed?</h1>
+    </div>
+    <div class="column">
+      <div class="parent-col-flex">
+        <Label>Top Score</Label>
+        <span id="top-score">0</span>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div>
+    <div>
+      <div>
+        <h2>Click <button id="start">Start</button> to play!</h2>
+      </div>
+      <div>
+        <h2>Score: <span id="score">0</span></h2>
+      </div>
+      <div>
+        <h2><span id="timer">0</span> Seconds left.</h2>
+      </div>
+    </div>
+    <div id="grid" class="grid">
       <div id="hole0" class="hole">
         <div id="mole0" class="mole"></div>
       </div>
-      <div id="hole1" class="hole">
-        <div id="mole1" class="mole"></div>
-      </div>
-      <!--TODO: Add the missing holes and moles. -->
     </div>
-    <script src="./src/index.js"></script>
-  </body>
+  </div>
+
+  <script src="./src/index.js"></script>
+</body>
+
 </html>
