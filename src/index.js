@@ -5,6 +5,8 @@ const startButton = document.querySelector("#start");
 const score = document.querySelector("#score");
 const timerDisplay = document.querySelector("#timer");
 const grid = document.querySelector("#grid");
+const topScore = document.querySelector("#top-score");
+const gameLevel = document.querySelector("#game-level");
 
 // Declare global variables
 const maxHoles = 9;
@@ -99,12 +101,11 @@ function gameOver() {
     const gameStopped = stopGame();
     return gameStopped;
   }
+
 }
 
 /**
- *
  * Calls the showAndHide() function with a specific delay and a hole.
- *
  */
 function showUp() {
   let delay = setDelay(difficulty);
@@ -114,9 +115,7 @@ function showUp() {
 }
 
 /**
- *
  * This function show and hide the mole given a delay time and the hole where the mole is hidden. 
- *
  */
 function showAndHide(hole, delay) {
 
@@ -139,10 +138,8 @@ function showAndHide(hole, delay) {
 }
 
 /**
- *
  * Adds or removes the 'show' class that is defined in styles.css to
  * a given hole. It returns the hole.
- *
  */
 function toggleVisibility(hole) {
   hole.classList.toggle("show");
@@ -151,9 +148,7 @@ function toggleVisibility(hole) {
 }
 
 /**
- *
  * This function increments the points global variable and updates the scoreboard.
- *
  */
 function updateScore() {
   // increment current score by 1
@@ -161,6 +156,9 @@ function updateScore() {
 
   // display new score
   score.textContent = points;
+
+  // update top score if requrie
+  updateTopScore();
 
   return points;
 }
@@ -177,9 +175,7 @@ function clearScore() {
 }
 
 /**
- *
  * Updates the control board with the timer if time > 0
- *
  */
 function updateTimer() {
   if (time > 0) {
@@ -205,14 +201,17 @@ function startTimer() {
 }
 
 /**
- *
  * This is the event handler that gets called when a player
  * clicks on a mole. 
- *
  */
 function whack(event) {
   points = updateScore();
   return points;
+}
+
+let setGameLevel = (event) => {
+  console.log(event.target.value)
+  difficulty = event.target.value;
 }
 
 /**
@@ -245,7 +244,21 @@ function setDuration(duration) {
 function stopGame() {
   // stopAudio(song);  //optional
   clearInterval(timer);
+
+  toggleStartButtonDisable();
+
   return "game stopped";
+}
+
+/**
+* This function update top score
+*/ 
+let updateTopScore = () => {
+  const maxScore = parseInt(topScore.innerText)
+
+  if (points > maxScore) {
+    topScore.textContent = points;
+  }
 }
 
 /**
@@ -270,10 +283,21 @@ function startGame() {
 
   // new code
   startTimer();
+
+  // disable start button to avoid multiple click
+  toggleStartButtonDisable();
+
   return "game started";
 }
 
-/*
+/**
+* This function is used to disable/enable start button.
+*/
+const toggleStartButtonDisable = () => {
+  startButton.classList.toggle("disable");
+}
+
+/**
 * This function return single set of hole and mole HTML content
 */
 const getGameRenderItem = (idx) => {
@@ -282,7 +306,7 @@ const getGameRenderItem = (idx) => {
           </div>`;
 };
 
-/*
+/**
 * Render all required set of holes & moles as HTML content
 */
 const renderGame = () => {
@@ -302,7 +326,7 @@ const renderGame = () => {
   grid.innerHTML = gameItems;
 };
 
-/*
+/**
 * This function is used to setup the game environment
 */
 const setupGameEnv = () => {
@@ -315,6 +339,8 @@ const setupGameEnv = () => {
 
   // Bind event handler(s)
   startButton.addEventListener("click", startGame);
+  gameLevel.addEventListener("change", setGameLevel);
+
   setEventListeners();
 };
 
